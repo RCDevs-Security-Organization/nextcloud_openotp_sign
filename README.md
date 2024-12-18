@@ -1,3 +1,5 @@
+# ![](https://docs.rcdevs.com/pictures/logo/rcdevs/nextcloud/openotp_sign_169x169.png)
+
 # OpenOTP Sign
 
 # Electronic Signature
@@ -26,3 +28,5 @@ Please contact RCDevs’ sales team [info@rcdevs.com](mailto:info@rcdevs.com) to
 
 [Open OTP Token Electronic Signature](https://youtu.be/qRBoLn9tdfY)
 [Nextcloud plugin for e-Signature with OpenOTP - RCDevs](https://youtu.be/M_MvmO0Mb1g)
+
+![](https://docs.rcdevs.com/pictures/logo/rcdevs/nextcloud/rcdevs_115x54.png)
