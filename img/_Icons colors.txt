@@ -1,0 +1,18 @@
+_disabled
+	main (light) : d8d8d8ff
+	object (dark): b9b9b9ff
+_gray
+	main (light) : ccccccff
+	object (dark): 4d4d4dff
+_green
+	main (light) : 99ff99ff
+	object (dark): 009900ff
+_red
+	main (light) : ff9999ff
+	object (dark): 990000ff
+
+white transparency
+	ffffffbf
+
+black transparency
+	000000bf
