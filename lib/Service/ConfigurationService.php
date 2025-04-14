@@ -31,8 +31,7 @@ class ConfigurationService
 {
 	public function __construct(
 		private IConfig $config,
-	) {
-	}
+	) {}
 
 	/** ******************************************************************************************
 	 * PRIVATE
@@ -193,10 +192,10 @@ class ConfigurationService
 
 	// public function watermarkText(): string
 	// {
-	// 	try {
-	// 		return $this->isEnabledDemoMode() ? $this->config->getAppValue(RCDevsApp::APP_ID, 'watermark_text') : '';
-	// 	} catch (\Throwable $th) {
-	// 		throw $th;
-	// 	}
+	//	try {
+	//		return $this->isEnabledDemoMode() ? $this->config->getAppValue(RCDevsApp::APP_ID, 'watermark_text') : '';
+	//	} catch (\Throwable $th) {
+	//		throw $th;
+	//	}
 	// }
 }

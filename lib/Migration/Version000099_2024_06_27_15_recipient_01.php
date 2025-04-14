@@ -21,8 +21,7 @@ class Version000099_2024_06_27_15_recipient_01 extends SimpleMigrationStep
 	public function __construct(
 		private IDBConnection	$connection,
 		private IUserManager	$userManager,
-	) {
-	}
+	) {}
 
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options)
 	{

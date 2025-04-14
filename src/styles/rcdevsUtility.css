@@ -1,11 +1,11 @@
 /* CHECK CONNECTION */
 .rcdevsStatusLoader {
-    width: 28px;
-    height: 28px;
+	width: 28px;
+	height: 28px;
 }
 
 .rcdevsStatusRequest {
-    animation: fadeIn 1s ease-in infinite alternate;
+	animation: fadeIn 1s ease-in infinite alternate;
 }
 
 .rcdevsTestConnection {

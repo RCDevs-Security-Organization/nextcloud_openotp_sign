@@ -162,18 +162,18 @@ export default {
 
 	methods: {
 		// runAPI: function (urlApi) {
-		// 	try {
-		// 		return axios
-		// 			.get(
-		// 				generateOcsUrl(`apps/${appName}/api/v1/${urlApi}`),
-		// 				{},
-		// 				{
-		// 					cancelToken: this.source.token,
-		// 				}
-		// 			)
-		// 			.catch((error) => {
-		// 				this.error = true;
-		// 				console.log(error);
+		//	try {
+		//		return axios
+		//			.get(
+		//				generateOcsUrl(`apps/${appName}/api/v1/${urlApi}`),
+		//				{},
+		//				{
+		//					cancelToken: this.source.token,
+		//				}
+		//			)
+		//			.catch((error) => {
+		//				this.error = true;
+		//				console.log(error);
 		// 			});
 		// 	} catch (error) {
 		// 		console.error(error.message);

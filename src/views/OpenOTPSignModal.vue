@@ -60,10 +60,10 @@
 					</rcdevsOosItem>
 				</rcdevsOosRow>
 
-				<rcdevsOosRow v-if="axiosTransaction.success && this.file.signedOrSealed" class="greenTick">
-					<greenTick>
-						<img id="greenTick" :src="ui.pictures.greenTick" />
-					</greenTick>
+				<rcdevsOosRow v-if="axiosTransaction.success && this.file.signedOrSealed" class="successTick">
+					<successTick>
+						<img id="successTick" :src="ui.pictures.successTick" />
+					</successTick>
 					<button type="button" @click="closeModal" class="closeModal">
 						{{ ui.button.close }}
 					</button>
@@ -209,7 +209,7 @@ export default {
 		this.ui.pictures.mobileSigningImg = generateFilePath(appName, '', 'img/') + 'mobile-signing.png';
 		this.ui.pictures.loadingImg = generateFilePath('core', '', 'img/') + 'loading.gif';
 		this.ui.pictures.rcdevsLogo = generateFilePath(appName, '', 'img/') + 'rcdevsLogo.svg';
-		this.ui.pictures.greenTick = generateFilePath(appName, '', 'img/') + 'greenTick.svg';
+		this.ui.pictures.successTick = generateFilePath(appName, '', 'img/') + 'successTick.svg';
 
 		this.ui.title = [
 			{

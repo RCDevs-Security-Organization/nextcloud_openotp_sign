@@ -45,7 +45,12 @@ class SoapService
 		string $serverUrl,
 	) {
 		try {
+			$this->logRCDevs->debug(sprintf("API key : [%s]", $this->configurationService->apiKey()), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
+
 			$context = stream_context_create([
+				'http' => [
+					'header' => "WA-API-Key: " . $this->configurationService->apiKey() . "\r\n"
+				],
 				'ssl' => [
 					// set some SSL/TLS specific options
 					'verify_peer' => false,
@@ -53,34 +58,17 @@ class SoapService
 					'allow_self_signed' => true
 				]
 			]);
-			
+
 			$this->soapClient = new SoapClient(null, array(
 				'location' 			=> $serverUrl,
-				'uri'	  			=> $serverUrl,
+				'uri'				=> $serverUrl,
 				'proxy_host'	 	=> $this->configurationService->proxy()->host,
 				'proxy_port'	 	=> $this->configurationService->proxy()->port,
 				'proxy_login'		=> $this->configurationService->proxy()->username,
 				'proxy_password' 	=> $this->configurationService->proxy()->password,
 				'encoding'			=> 'UTF-8',
-				'stream_context' => $context
+				'stream_context'	=> $context
 			));
-
-			// Build headers
-			$headers = array();
-
-			$headers[] = new SoapHeader(
-				'http://soapinterop.org/echoheader/',
-				'Content-type',
-				'text/xml;charset="utf-8"'
-			);
-
-			$headers[] = new SoapHeader(
-				'http://soapinterop.org/echoheader/',
-				'WA-API-Key',
-				$this->configurationService->apiKey()
-			);
-
-			$this->soapClient->__setSoapHeaders($headers);
 
 			// Add options
 			$this->options = $this->addSoapOptions();

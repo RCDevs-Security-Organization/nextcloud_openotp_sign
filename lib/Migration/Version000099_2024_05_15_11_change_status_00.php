@@ -12,14 +12,13 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_change_status_00 extends SimpleMigrationStep
 {
-	const created			   = 'created';
+	const created				= 'created';
 	const openotp_sign_sessions = 'openotp_sign_sessions';
-	const change_status		 = 'change_status';
+	const change_status		 	= 'change_status';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{
@@ -33,15 +32,15 @@ class Version000099_2024_05_15_11_change_status_00 extends SimpleMigrationStep
 			if (!$table->hasColumn(self::change_status)) {
 				$table->addColumn(self::change_status, 'bigint', [
 					'length'	=> 20,
-					'unsigned'  => true,
-					'notnull'   => false,
+					'unsigned'	=> true,
+					'notnull'	=> false,
 				]);
 			} else {
 				$table->modifyColumn(self::change_status, [
-					'type'	  => Type::getType('bigint'),
+					'type'		=> Type::getType('bigint'),
 					'length'	=> 20,
-					'unsigned'  => true,
-					'notnull'   => false,
+					'unsigned'	=> true,
+					'notnull'	=> false,
 				]);
 			}
 		}

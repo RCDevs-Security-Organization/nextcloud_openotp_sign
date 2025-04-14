@@ -107,7 +107,7 @@ class SignService
 				throw new Exception("User ID error", 1);
 			}
 
-			$resp = new  OOtpResponse($this->commonSign($recipient, $path, $fileId, $remoteAddress, asynchronous: true, advanced: $advanced));
+			$resp = new OOtpResponse($this->commonSign($recipient, $path, $fileId, $remoteAddress, asynchronous: true, advanced: $advanced));
 			if ($resp->isFailed()) {
 				throw new Exception($resp[Constante::request(CstRequest::MESSAGE)]);
 			}
@@ -203,7 +203,7 @@ class SignService
 			$nbServers = count($this->configurationService->serversUrls());
 			for ($cptServers = 0; $cptServers < $nbServers; ++$cptServers) {
 				if (empty($this->configurationService->serversUrls()[$cptServers])) {
-					$this->logRCDevs->info(sprintf("This server url is empty, ignoed (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
+					$this->logRCDevs->info(sprintf("This server url is empty, ignored (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
 					$resp = new OOtpResponse([]);
 					$client = new nusoap_client($this->configurationService->serversUrls()[$cptServers], false, $proxy->host, $proxy->port, $proxy->username, $proxy->password, self::CNX_TIME_OUT, $this->syncTimeout);
 				} else {
@@ -219,6 +219,8 @@ class SignService
 						"Content-type: text/xml;charset=\"utf-8\"",
 						"WA-API-Key: {$this->apiKey}",
 					]);
+
+					$this->logRCDevs->debug(sprintf("API key : [%s]", $this->apiKey), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
 
 					if ($toSeal) {
 						$resp = new OOtpResponse($client->call('openotpSeal', array(
@@ -420,7 +422,7 @@ class SignService
 				$nbServers = count($this->configurationService->serversUrls());
 				for ($cptServers = 0; $cptServers < $nbServers; ++$cptServers) {
 					if (empty($this->configurationService->serversUrls()[$cptServers])) {
-						$this->logRCDevs->info(sprintf("This server url is empty, ignoed (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
+						$this->logRCDevs->info(sprintf("This server url is empty, ignored (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
 						$resp = new OOtpResponse([]);
 					} else {
 						$client = new nusoap_client($this->configurationService->serversUrls()[$cptServers], false, $proxy->host, $proxy->port, $proxy->username, $proxy->password, self::CNX_TIME_OUT, $this->syncTimeout);
@@ -434,7 +436,7 @@ class SignService
 							"WA-API-Key: {$this->apiKey}",
 						]);
 
-						$resp = new  OOtpResponse($client->call(
+						$resp = new OOtpResponse($client->call(
 							// $operation,
 							(Helpers::isAdvanced($signSession->getAdvanced()) ? 'openotpCancelSign' : 'openotpCancelConfirm'),
 							array($session),
@@ -514,7 +516,7 @@ class SignService
 			$nbServers = count($this->configurationService->serversUrls());
 			for ($cptServers = 0; $cptServers < $nbServers; ++$cptServers) {
 				if (empty($this->configurationService->serversUrls()[$cptServers])) {
-					$this->logRCDevs->info(sprintf("This server url is empty, ignoed (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
+					$this->logRCDevs->info(sprintf("This server url is empty, ignored (#%s)", $cptServers), __FUNCTION__ . DIRECTORY_SEPARATOR . __CLASS__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
 				} else {
 					$client = new nusoap_client($this->configurationService->serversUrls()[$cptServers], false, $proxy->host, $proxy->port, $proxy->username, $proxy->password, self::CNX_TIME_OUT);
 
@@ -531,7 +533,7 @@ class SignService
 					// Get all pending transactions to check (no filter at all)
 					$signSessions = $this->mapper->findPendingsAll($userId, ignoreExpiryDate: true);
 
-					/** @var SignSession  $signSession */
+					/** @var SignSession $signSession */
 					foreach ($signSessions as $signSession) {
 						/**
 						 * This "try catch" is needed in case of exception during process: it permits to reset the mutex.
@@ -744,7 +746,7 @@ class SignService
 			}
 
 			$reservedAt = Helpers::getArrayData($resp[Constante::request(CstRequest::DATA)], 'reserved_at', true, 'No "Reservation" column found in query result');
-			$lastRun 	= Helpers::getArrayData($resp[Constante::request(CstRequest::DATA)], 'last_run', true, 'No "Last Run" column found in query result');
+			$lastRun	= Helpers::getArrayData($resp[Constante::request(CstRequest::DATA)], 'last_run', true, 'No "Last Run" column found in query result');
 			$data = [
 				Constante::database(CstDatabase::COLUMN_LAST_RUN)		=> $lastRun,
 				Constante::database(CstDatabase::COLUMN_RESERVED_AT)	=> $reservedAt,

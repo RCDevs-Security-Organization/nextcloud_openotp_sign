@@ -37,7 +37,7 @@ rcdevsOosModalMainContainer {
 	justify-content: center;
 }
 
-greenTick {
+successTick {
 	display: inline-block;
 	font-size: 150px;
 	color: green;
@@ -45,12 +45,12 @@ greenTick {
 	margin-bottom: 100px;
 }
 
-greenTick img {
+successTick img {
 	height: 120px;
 	margin: auto;
 }
 
-.greenTick {
+.successTick {
 	flex-flow: column;
 }
 

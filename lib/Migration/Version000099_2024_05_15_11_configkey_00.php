@@ -13,16 +13,15 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_configkey_00 extends SimpleMigrationStep
 {
-	const appconfig		 = 'appconfig';
-	const appid			 = 'appid';
-	const configkey		 = 'configkey';
-	const openotp_sign	  = 'openotp_sign';
-	const servers_urls	  = 'servers_urls';
+	const appconfig		= 'appconfig';
+	const appid			= 'appid';
+	const configkey		= 'configkey';
+	const openotp_sign	= 'openotp_sign';
+	const servers_urls	= 'servers_urls';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options)
 	{

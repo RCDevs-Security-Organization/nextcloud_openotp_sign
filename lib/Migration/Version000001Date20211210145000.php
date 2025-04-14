@@ -1,21 +1,22 @@
 <?php
 
-  namespace OCA\OpenOTPSign\Migration;
+namespace OCA\OpenOTPSign\Migration;
 
-  use Closure;
-  use OCP\DB\ISchemaWrapper;
-  use OCP\Migration\SimpleMigrationStep;
-  use OCP\Migration\IOutput;
+use Closure;
+use OCP\DB\ISchemaWrapper;
+use OCP\Migration\SimpleMigrationStep;
+use OCP\Migration\IOutput;
 
-  class Version000001Date20211210145000 extends SimpleMigrationStep {
-
+class Version000001Date20211210145000 extends SimpleMigrationStep
+{
 	/**
-	* @param IOutput $output
-	* @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
-	* @param array $options
-	* @return null|ISchemaWrapper
-	*/
-	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+	 * @param IOutput $output
+	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
+	 * @param array $options
+	 * @return null|ISchemaWrapper
+	 */
+	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options)
+	{
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 

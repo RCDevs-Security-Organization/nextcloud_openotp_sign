@@ -82,7 +82,7 @@ class RequestsService
 			foreach ($databaseResponse as $databaseRecord) {
 				/**@var User $user */
 				$user = json_decode($databaseRecord->getRecipient(), false);
-				
+
 				$requests[] = [
 					'id'			=> $databaseRecord->getId(),
 					'created'		=> $databaseRecord->getCreated(),

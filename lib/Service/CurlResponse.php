@@ -23,10 +23,11 @@
 
 namespace OCA\OpenOTPSign\Service;
 
- class CurlResponse {
+class CurlResponse
+{
 	public $response;
 	public $header_size;
 	public $header;
 	public $body;
 	public $code;
- }
+}

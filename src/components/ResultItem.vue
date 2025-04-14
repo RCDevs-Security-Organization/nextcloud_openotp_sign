@@ -20,45 +20,28 @@
 -->
 
 <template>
-	<li class="row"
-		@click="handleClick">
-		<NcAvatar v-if="item.value.shareType === OC.Share.SHARE_TYPE_USER"
-			:user="item.value.shareWith"
-			:display-name="itemName(item)"
-			:size="44"
-			:disable-menu="true"
-			:show-user-status="false"
-			:show-user-status-compact="false" />
+	<li class="row" @click="handleClick">
+		<NcAvatar v-if="item.value.shareType === OC.Share.SHARE_TYPE_USER" :user="item.value.shareWith" :display-name="itemName(item)" :size="44" :disable-menu="true" :show-user-status="false" :show-user-status-compact="false" />
 
-		<NcAvatar v-if="item.value.shareType === OC.Share.SHARE_TYPE_EMAIL"
-			:display-name="itemName(item)"
-			:size="44"
-			:is-no-user="true"
-			:disable-menu="true"
-			:show-user-status="false"
-			:show-user-status-compact="false" />
+		<NcAvatar v-if="item.value.shareType === OC.Share.SHARE_TYPE_EMAIL" :display-name="itemName(item)" :size="44" :is-no-user="true" :disable-menu="true" :show-user-status="false" :show-user-status-compact="false" />
 
 		<div class="row__user-wrapper">
-			<div ref="userName"
-				class="row__user-descriptor">
+			<div ref="userName" class="row__user-descriptor">
 				<span class="row__user-name">
-					<NcHighlight :text="itemName(item)"
-						:search="searchText" />
+					<NcHighlight :text="itemName(item)" :search="searchText" />
 				</span>
 			</div>
 			<div>
-				<NcHighlight :text="itemEmail(item)"
-					:search="searchText" />
+				<NcHighlight :text="itemEmail(item)" :search="searchText" />
 			</div>
 		</div>
-		<div class="row__icon icon"
-			:class="itemIcon(item)" />
+		<div class="row__icon icon" :class="itemIcon(item)" />
 	</li>
 </template>
 
 <script>
-import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
-import NcHighlight from '@nextcloud/vue/dist/Components/NcHighlight.js'
+import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js';
+import NcHighlight from '@nextcloud/vue/dist/Components/NcHighlight.js';
 
 export default {
 	name: 'ResultItem',
@@ -79,48 +62,47 @@ export default {
 		},
 	},
 
-	computed: {
-	},
+	computed: {},
 
 	methods: {
 		itemName(item) {
-			return item.name || item.label || ''
+			return item.name || item.label || '';
 		},
 
 		itemIcon(item) {
 			if (item.icon) {
-				return item.icon
+				return item.icon;
 			}
 
-			const shareType = item.value?.shareType || null
+			const shareType = item.value?.shareType || null;
 			switch (shareType) {
-			case OC.Share.SHARE_TYPE_USER:
-				return 'icon-user'
-			case OC.Share.SHARE_TYPE_EMAIL:
-				return 'icon-mail'
+				case OC.Share.SHARE_TYPE_USER:
+					return 'icon-user';
+				case OC.Share.SHARE_TYPE_EMAIL:
+					return 'icon-mail';
 			}
-			return ''
+			return '';
 		},
 
 		itemEmail(item) {
 			if (item.shareWithDisplayNameUnique) {
-				return item.shareWithDisplayNameUnique
+				return item.shareWithDisplayNameUnique;
 			}
 
-			const shareType = item.value?.shareType || null
-			const shareWith = item.value?.shareWith || ''
+			const shareType = item.value?.shareType || null;
+			const shareWith = item.value?.shareWith || '';
 			switch (shareType) {
-			case OC.Share.SHARE_TYPE_EMAIL:
-				return shareWith
+				case OC.Share.SHARE_TYPE_EMAIL:
+					return shareWith;
 			}
-			return ''
+			return '';
 		},
 
 		handleClick() {
-			this.$emit('click-item', this.item)
+			this.$emit('click-item', this.item);
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -133,7 +115,8 @@ export default {
 	height: 56px;
 	padding: 0 4px;
 
-	span, div {
+	span,
+	div {
 		cursor: pointer;
 	}
 

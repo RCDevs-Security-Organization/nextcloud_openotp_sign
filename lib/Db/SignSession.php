@@ -29,7 +29,6 @@ use OCP\AppFramework\Db\Entity;
 
 class SignSession extends Entity implements JsonSerializable
 {
-
 	private static $timeZone;
 	private static $displayTimeZone;
 
@@ -91,7 +90,7 @@ class SignSession extends Entity implements JsonSerializable
 		}
 	}
 
-	public function jsonSerialize()
+	public function jsonSerialize(): mixed
 	{
 		if (self::$timeZone != NULL) {
 			$this->created->setTimezone(self::$timeZone);
@@ -100,13 +99,13 @@ class SignSession extends Entity implements JsonSerializable
 
 		return [
 			'id'				=> $this->id,
-			'path'			  => $this->filePath,
-			'is_advanced'	   => $this->advanced,
-			'recipient'		 => $this->recipient,
-			'created'		   => $this->created->format('Y-m-d H:i:s ') . self::$displayTimeZone,
-			'session'		   => $this->session,
-			'message'		   => $this->message,
-			'expiration_date'   => $this->expiryDate->format('Y-m-d H:i:s ') . self::$displayTimeZone
+			'path'				=> $this->filePath,
+			'is_advanced'		=> $this->advanced,
+			'recipient'		 	=> $this->recipient,
+			'created'			=> $this->created->format('Y-m-d H:i:s ') . self::$displayTimeZone,
+			'session'			=> $this->session,
+			'message'			=> $this->message,
+			'expiration_date'	=> $this->expiryDate->format('Y-m-d H:i:s ') . self::$displayTimeZone
 		];
 	}
 }

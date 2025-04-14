@@ -31,12 +31,12 @@
 
 			<!-- Loop servers -->
 			<rcdevsSettingsPartsContainer>
-				<rcdevsSettingsRow v-for="(serverUrl, cptServer) in serversUrls">
+				<rcdevsSettingsRow v-for="(serverUrl, cptServer) in serversUrls" :key="'server-url-' + cptServer">
 					<rcdevsSettingsItem class="rcdevsSettingsLabel">
 						{{ getT('OpenOTP server URL') + ' #' + (parseInt(cptServer) + 1) }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input :id="'serverUrl' + cptServer" :ref="'serverUrl' + cptServer" v-model="serversUrls[cptServer]" type="text" :name="'serverUrl' + cptServer" maxlength="300" :placeholder="`${placeHolderServerUrl}`" />
+						<input :id="'serverUrl' + cptServer" :ref="'serverUrl' + cptServer" data-impact-server v-model="serversUrls[cptServer]" type="text" :name="'serverUrl' + cptServer" maxlength="300" :placeholder="`${placeHolderServerUrl}`" />
 						<deleteIcon @click="resetValueAndCo(`serverUrl${cptServer}`)">x</deleteIcon>
 					</rcdevsSettingsItem>
 
@@ -56,7 +56,7 @@
 						{{ getT('OpenOTP client ID') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="openotp_client_id" ref="clientId" v-model="clientId" type="text" :name="openotp_client_id" maxlength="300" :placeholder="`${placeHolderClientId}`" />
+						<input id="openotp_client_id" ref="clientId" data-impact-server v-model="clientId" type="text" :name="openotp_client_id" maxlength="300" :placeholder="`${placeHolderClientId}`" />
 						<deleteIcon @click="resetValueAndCo('clientId')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -67,7 +67,7 @@
 						{{ getT('OpenOTP API key') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="api_key" ref="apiKey" v-model="apiKey" type="text" name="api_key" maxlength="256" :placeholder="`${placeHolderApiKey}`" />
+						<input id="api_key" ref="apiKey" data-impact-server v-model="apiKey" type="text" name="api_key" maxlength="256" :placeholder="`${placeHolderApiKey}`" />
 						<deleteIcon @click="resetValueAndCo('apiKey')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -77,7 +77,7 @@
 		<rcdevsSettingsContainer id="rcdevsOosProxy">
 			<rcdevsSettingsPartsContainer>
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="useProxy" type="switch">{{ getT('Use a proxy') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="useProxy" type="switch" @update:checked="saveSettings(true)">{{ getT('Use a proxy') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<!-- Proxy host -->
@@ -86,7 +86,7 @@
 						{{ getT('Proxy host') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="proxyHost" ref="proxyHost" v-model="proxyHost" type="text" name="proxyHost" maxlength="255" />
+						<input id="proxyHost" ref="proxyHost" data-impact-server v-model="proxyHost" type="text" name="proxyHost" maxlength="255" />
 						<deleteIcon @click="resetValueAndCo('proxyHost')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -97,7 +97,7 @@
 						{{ getT('Proxy port') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="proxy_port" ref="proxyPort" v-model="proxyPort" type="number" name="proxy_port" min="1" max="65535" />
+						<input id="proxy_port" ref="proxyPort" data-impact-server v-model="proxyPort" type="number" name="proxy_port" min="1" max="65535" />
 						<deleteIcon @click="resetValueAndCo('proxyPort')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -108,7 +108,7 @@
 						{{ getT('Proxy username') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="proxy_username" ref="proxyUsername" v-model="proxyUsername" type="text" name="proxy_username" maxlength="255" />
+						<input id="proxy_username" ref="proxyUsername" data-impact-server v-model="proxyUsername" type="text" name="proxy_username" maxlength="255" />
 						<deleteIcon @click="resetValueAndCo('proxyUsername')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -119,7 +119,7 @@
 						{{ getT('Proxy password') }}
 					</rcdevsSettingsItem>
 					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<input id="proxy_password" ref="proxyPassword" v-model="proxyPassword" type="text" name="proxy_password" maxlength="255" />
+						<input id="proxy_password" ref="proxyPassword" data-impact-server v-model="proxyPassword" type="text" name="proxy_password" maxlength="255" />
 						<deleteIcon @click="resetValueAndCo('proxyPassword')">x</deleteIcon>
 					</rcdevsSettingsItem>
 				</rcdevsSettingsRow>
@@ -140,26 +140,26 @@
 			<rcdevsSettingsPartsContainer>
 				<!-- Enable Seal -->
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="enableOtpSeal" type="switch">{{ getT('Enable OpenOTP seal') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="enableOtpSeal" type="switch" @update:checked="saveSettings">{{ getT('Enable OpenOTP seal') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<!-- Enable Sign -->
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="enableOtpSign" type="switch">{{ getT('Enable OpenOTP signature') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="enableOtpSign" type="switch" @update:checked="saveSettings">{{ getT('Enable OpenOTP signature') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<!-- Enable Sign Standard -->
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="signTypeStandard" type="switch">{{ getT('Enable Standard signature') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="signTypeStandard" type="switch" @update:checked="saveSettings">{{ getT('Enable Standard signature') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<!-- Enable Sign Advanced -->
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="signTypeAdvanced" type="switch">{{ getT('Enable Advanced signature') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="signTypeAdvanced" type="switch" @update:checked="saveSettings">{{ getT('Enable Advanced signature') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<rcdevsSettingsRow>
-					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="overwrite" type="switch">{{ getT('Overwrite the original PDF file with its signed/sealed copy (default: time-stamped copy)') }}</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch class="rcdevsSettingsChkBox" :checked.sync="overwrite" type="switch" @update:checked="saveSettings">{{ getT('Overwrite the original PDF file with its signed/sealed copy (default: time-stamped copy)') }}</NcCheckboxRadioSwitch>
 				</rcdevsSettingsRow>
 
 				<!-- Textual Complements : Seal -->
@@ -226,40 +226,18 @@
 					</button>
 				</rcdevsSettingsRow>
 			</rcdevsSettingsPartsContainer>
-
-			<rcdevsSettingsFooter>
-				<rcdevsSettingsRow>
-					<rcdevsSettingsItem class="rcdevsSettingsLabel">
-						<button @click="saveSettings">
-							{{ getT('Save') }}
-						</button>
-					</rcdevsSettingsItem>
-					<rcdevsSettingsItem class="rcdevsSettingsInput">
-						<transition name="fade">
-							<p v-if="!saved" class="save_warning">
-								{{ getT('Do not forget to save your settings!') }}
-							</p>
-							<p v-if="success" id="save_success">
-								{{ getT('Your settings have been saved succesfully') }}
-							</p>
-							<p v-if="failure" id="save_failure">
-								{{ getT('There was an error saving settings') }}
-							</p>
-						</transition>
-					</rcdevsSettingsItem>
-				</rcdevsSettingsRow>
-			</rcdevsSettingsFooter>
 		</rcdevsSettingsContainer>
 	</rcdevsMain>
 </template>
 
 <script>
-import {loadState} from '@nextcloud/initial-state';
-import axios from '@nextcloud/axios';
-import {generateFilePath, generateOcsUrl} from '@nextcloud/router';
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js';
 import {appName} from '../javascript/config.js';
+import {generateFilePath, generateOcsUrl} from '@nextcloud/router';
 import {getT} from '../javascript/utility.js';
+import {loadState} from '@nextcloud/initial-state';
+import {showSuccess, showError} from '@nextcloud/dialogs';
+import axios from '@nextcloud/axios';
+import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js';
 
 const reqServerUrlItem = {
 	enable: true,
@@ -391,9 +369,10 @@ export default {
 		this.placeHolderApiKey = this.getT('Get API Key from RCDevs');
 
 		// Add Event Listener on all inputs
-		const inputs = document.querySelectorAll('input');
-		inputs.forEach((input) => {
-			input.addEventListener('change', this.inputNotSaved);
+		this.$el.querySelectorAll('input[type="text"]').forEach((input) => {
+			input.addEventListener('change', (event) => {
+				this.saveSettings(event.target.hasAttribute('data-impact-server'));
+			});
 		});
 
 		// Add Event listener on NcCheckboxRadioSwitch (FYI, focus on main generated span tag to check if radio is checked or not: the radio does not throw an event)
@@ -475,7 +454,7 @@ export default {
 			return `${myDate.slice(0, 3).join(`-`)} ${myDate.slice(3, 6).join(`:`)}.${myDate.slice(-1)[0]}`;
 		},
 
-		inputNotSaved(event) {
+		inputNotSaved: function (event) {
 			this.saved = false;
 		},
 
@@ -543,7 +522,7 @@ export default {
 				});
 		},
 
-		saveSettings() {
+		saveSettings(impactServer) {
 			this.success = false;
 			this.failure = false;
 
@@ -579,12 +558,22 @@ export default {
 					console.info(`Save Settings reponse : ${JSON.stringify(response)}`);
 					this.success = true;
 					this.saved = true;
+					showSuccess(getT('Your settings have been saved succesfully'));
+
+					/**
+					 * Even if the config has been saved, just check if servers are online
+					 * This check is done only if the modified field is used for this check
+					 */
+					if (impactServer) {
+						console.info('Check server connection');
+						this.testConnection();
+					}
 				})
 				.catch((error) => {
 					this.failure = true;
 					this.saved = false;
-					// eslint-disable-next-line
 					console.log(error);
+					showError(getT('There was an error saving settings'));
 				});
 		},
 

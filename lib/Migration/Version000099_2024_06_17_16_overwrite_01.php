@@ -12,13 +12,12 @@ use OCP\IDBConnection;
 
 class Version000099_2024_06_17_16_overwrite_01 extends SimpleMigrationStep
 {
-	const overwrite			  = 'overwrite';
-	const openotp_sign_sessions = 'openotp_sign_sessions';
+	const overwrite				= 'overwrite';
+	const openotp_sign_sessions	= 'openotp_sign_sessions';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{
@@ -32,13 +31,13 @@ class Version000099_2024_06_17_16_overwrite_01 extends SimpleMigrationStep
 			if (!$table->hasColumn(self::overwrite)) {
 				$table->addColumn(self::overwrite, 'smallint', [
 					'length'	=> 1,
-					'notnull'   => false,
+					'notnull'	=> false,
 				]);
 			} else {
 				$table->modifyColumn(self::overwrite, [
-					'type'	  => Type::getType('smallint'),
+					'type'		=> Type::getType('smallint'),
 					'length'	=> 1,
-					'notnull'   => false,
+					'notnull'	=> false,
 				]);
 			}
 		}
@@ -46,7 +45,5 @@ class Version000099_2024_06_17_16_overwrite_01 extends SimpleMigrationStep
 		return $schema;
 	}
 
-	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options)
-	{
-	}
+	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {}
 }

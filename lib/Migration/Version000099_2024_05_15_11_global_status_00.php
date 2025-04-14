@@ -5,7 +5,6 @@ namespace OCA\OpenOTPSign\Migration;
 use Closure;
 use Doctrine\DBAL\Types\Type;
 use Exception;
-use OCA\OpenOTPSign\Service\Status;
 use OCA\OpenOTPSign\Utils\Constante;
 use OCA\OpenOTPSign\Utils\CstStatus;
 use OCP\DB\ISchemaWrapper;
@@ -15,16 +14,15 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_global_status_00 extends SimpleMigrationStep
 {
-	const global_status		 = 'global_status';
+	const global_status			= 'global_status';
 	const id					= 'id';
-	const is_error			  = 'is_error';
+	const is_error				= 'is_error';
 	const is_pending			= 'is_pending';
-	const openotp_sign_sessions = 'openotp_sign_sessions';
+	const openotp_sign_sessions	= 'openotp_sign_sessions';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{
@@ -38,13 +36,13 @@ class Version000099_2024_05_15_11_global_status_00 extends SimpleMigrationStep
 			if (!$table->hasColumn(self::global_status)) {
 				$table->addColumn(self::global_status, 'string', [
 					'length'	=> 32,
-					'notnull'   => false,
+					'notnull'	=> false,
 				]);
 			} else {
 				$table->modifyColumn(self::global_status, [
-					'type'	  => Type::getType('string'),
+					'type'		=> Type::getType('string'),
 					'length'	=> 32,
-					'notnull'   => false,
+					'notnull'	=> false,
 				]);
 			}
 		}

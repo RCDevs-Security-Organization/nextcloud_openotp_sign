@@ -13,14 +13,13 @@ use OCP\IDBConnection;
 class Version000099_2024_05_15_11_file_id_00 extends SimpleMigrationStep
 {
 	const openotp_sign_sessions = 'openotp_sign_sessions';
-	const file_id			   = 'file_id';
+	const file_id				= 'file_id';
 
 	private bool $columnExists;
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{
@@ -34,15 +33,15 @@ class Version000099_2024_05_15_11_file_id_00 extends SimpleMigrationStep
 			if (!$table->hasColumn(self::file_id)) {
 				$table->addColumn(self::file_id, 'bigint', [
 					'length'	=> 20,
-					'unsigned'  => true,
-					'notnull'   => false,
+					'unsigned'	=> true,
+					'notnull'	=> false,
 				]);
 			} else {
 				$table->modifyColumn(self::file_id, [
-					'type'	  => Type::getType('bigint'),
+					'type'		=> Type::getType('bigint'),
 					'length'	=> 20,
-					'unsigned'  => true,
-					'notnull'   => false,
+					'unsigned'	=> true,
+					'notnull'	=> false,
 				]);
 			}
 		}

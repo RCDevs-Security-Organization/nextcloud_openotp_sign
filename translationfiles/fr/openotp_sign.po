@@ -161,8 +161,8 @@
 	msgid	"Sign with OpenOTP"
 	msgstr	"Signer avec OpenOTP"
 
-	msgid  "Seal with OpenOTP"
-	msgstr "Sceller avec OpenOTP"
+	msgid	"Seal with OpenOTP"
+	msgstr	"Sceller avec OpenOTP"
 
 ### Header
 	msgid	"OpenOTP Sign"

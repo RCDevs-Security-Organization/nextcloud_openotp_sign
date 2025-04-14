@@ -34,7 +34,6 @@ use OCP\Util;
 
 class AdminSettings implements ISettings
 {
-
 	/** @var IConfig */
 	// protected $config;
 
@@ -45,8 +44,7 @@ class AdminSettings implements ISettings
 		private IConfig $config,
 		private IInitialState $initialState,
 		private LogRCDevs $logRCDevs,
-	) {
-	}
+	) {}
 
 	/**
 	 * @return TemplateResponse

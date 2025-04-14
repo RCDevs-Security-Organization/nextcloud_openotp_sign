@@ -33,7 +33,8 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\IUser;
 
-class Application extends App implements IBootstrap {
+class Application extends App implements IBootstrap
+{
 	public const APP_ID					= 'openotp_sign';
 	public const APP_NAME				= 'OpenOTP Sign';
 	public const APP_NAME_SIGNED		= 'OOtpSigned';
@@ -41,15 +42,18 @@ class Application extends App implements IBootstrap {
 	public const APP_NAMESPACE			= 'OpenOTPSign';
 	public const APP_NAMETABLE_SESSIONS	= 'openotp_sign_sessions';
 
-	public function __construct(array $urlParams = []) {
+	public function __construct(array $urlParams = [])
+	{
 		parent::__construct(self::APP_ID, $urlParams);
 	}
 
-	public function register(IRegistrationContext $context): void {
+	public function register(IRegistrationContext $context): void
+	{
 		// $context->registerCapability(Capabilities::class);
 	}
 
-	public function boot(IBootContext $context): void {
+	public function boot(IBootContext $context): void
+	{
 		$server = $context->getServerContainer();
 
 		$server->getNavigationManager()->add(function () use ($server) {

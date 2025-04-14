@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+	width="512"
+	height="512"
+	viewBox="0 0 135.46666 135.46667"
+	version="1.1"
+	id="svg8"
+	inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+	sodipodi:docname="successTick.svg"
+	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:cc="http://creativecommons.org/ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<defs
+		id="defs2">
+		<style
+			id="style2">
+			.OpenOtpSign_cls-1 {
+			fill:none;
+			stroke:#000000;
+			stroke-width:8;
+			stroke-linecap:round;
+			stroke-miterlimit:0;
+			stroke-dasharray:0.8, 0.8;
+			stroke-dashoffset:0;
+			paint-order:stroke fill markers;
+			stop-color:#000000;
+			}
+			.OpenOtpSign_cls-2 {
+			fill:#009900;
+			fill-opacity:1;
+			stroke-width:0.264583;
+			}
+		</style>
+	</defs>
+	<sodipodi:namedview
+		id="base"
+		pagecolor="#ffffff"
+		bordercolor="#666666"
+		borderopacity="1.0"
+		inkscape:pageopacity="0.0"
+		inkscape:pageshadow="2"
+		inkscape:zoom="1.646233"
+		inkscape:cx="96.280417"
+		inkscape:cy="244.19387"
+		inkscape:document-units="px"
+		inkscape:current-layer="layer1"
+		showgrid="false"
+		inkscape:window-width="2560"
+		inkscape:window-height="1369"
+		inkscape:window-x="-8"
+		inkscape:window-y="-8"
+		inkscape:window-maximized="1"
+		inkscape:showpageshadow="2"
+		inkscape:pagecheckerboard="0"
+		inkscape:deskcolor="#d1d1d1" />
+	<metadata
+		id="metadata5">
+		<rdf:RDF>
+			<cc:Work
+				rdf:about="">
+				<dc:format>image/svg+xml</dc:format>
+				<dc:type
+					rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+	<g
+		inkscape:label="Layer 1"
+		inkscape:groupmode="layer"
+		id="layer1">
+		<ellipse
+			class="OpenOtpSign_cls-1"
+			id="path482"
+			cx="67.733345"
+			cy="67.732933"
+			rx="63.733318"
+			ry="63.734123" />
+		<path
+			class="OpenOtpSign_cls-2"
+			d="m 34.801399,69.056068 c 0.07498,-2.694864 1.122874,-4.266868 2.994284,-5.165156 2.096024,-0.973147 4.042296,-0.524003 5.689176,0.973144 1.497127,1.347432 2.919421,2.919436 4.416578,4.341725 3.742876,3.742868 7.560586,7.485736 11.2286,11.30346 0.97315,0.973145 1.422294,1.122855 2.395445,-0.07486 7.186304,-8.683452 14.372608,-17.292048 21.633745,-25.975497 2.76973,-3.293724 5.46459,-6.587448 8.23432,-9.881169 1.9463,-2.320579 5.01544,-2.694864 7.26116,-0.898288 2.320593,1.871433 2.694873,5.015441 0.82343,7.336017 -5.76401,6.961733 -11.52802,13.923468 -17.366892,20.8852 -4.716027,5.689157 -9.432025,11.303452 -14.148051,16.992612 -3.069146,3.66801 -6.512575,4.86573 -10.405175,3.44344 -1.27257,-0.44914 -2.320554,-1.19772 -3.218842,-2.09601 -5.913734,-5.91373 -11.752606,-11.827453 -17.66634,-17.666326 -1.197708,-1.197719 -1.9463,-2.470292 -1.871438,-3.518296 z"
+			id="path12"
+			style="" />
+	</g>
+</svg>

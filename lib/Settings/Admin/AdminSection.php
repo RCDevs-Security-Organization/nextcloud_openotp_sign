@@ -34,9 +34,7 @@ class AdminSection implements IIconSection
 	 * @param IURLGenerator $url
 	 * @param IL10N $l
 	 */
-	public function __construct(private IURLGenerator $url, private IL10N $l)
-	{
-	}
+	public function __construct(private IURLGenerator $url, private IL10N $l) {}
 
 	/**
 	 * returns the relative path to an 16*16 icon describing the section.

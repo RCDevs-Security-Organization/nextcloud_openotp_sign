@@ -24,8 +24,7 @@ class Version000099_2024_06_28_10_configkey_00 extends SimpleMigrationStep
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options)
 	{

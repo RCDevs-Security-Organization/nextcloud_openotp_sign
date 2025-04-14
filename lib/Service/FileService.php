@@ -38,11 +38,11 @@ use OCP\FilesMetadata\IFilesMetadataManager;
 
 class FileService
 {
-	public Folder $parentFolder;
-	public File $file;
-	public string $timedName;
-	private $extensionSignedFile;
-	private $timestamp;
+	public	Folder	$parentFolder;
+	public	File	$file;
+	public	string	$timedName;
+	private	string	$extensionSignedFile;
+	private	string	$timestamp;
 
 	public function __construct(
 		private ConfigurationService $configurationService,
@@ -87,7 +87,7 @@ class FileService
 				]
 			);
 		} catch (\Throwable $th) {
-			$this->logRCDevs->error("Issue on file creation {$this->timedName}: {$th->getMessage()}", __CLASS__ . DIRECTORY_SEPARATOR . __FUNCTION__ . DIRECTORY_SEPARATOR . __FILE__ . ':' . __LINE__);
+			$this->logRCDevs->error("Issue on file creation {$this->timedName}: {$th->getMessage()}", __CLASS__ . DIRECTORY_SEPARATOR . __FUNCTION__ . DIRECTORY_SEPARATOR . $th->getFile() . ':' . $th->getLine());
 			throw $th;
 		}
 	}

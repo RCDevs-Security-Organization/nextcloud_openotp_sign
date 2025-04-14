@@ -29,8 +29,8 @@ import '@nextcloud/dialogs/style.css'
 import OpenOTPSignModal from './views/OpenOTPSignModal.vue'
 import Logo from '../img/OpenOtpSign.svg?raw'
 import './styles/loader.scss'
-import {getT} from './javascript/utility.js';
-import {sealAction, signAction} from './javascript/config.js';
+import { getT } from './javascript/utility.js';
+import { sealAction, signAction } from './javascript/config.js';
 
 Vue.prototype.t = t
 Vue.prototype.n = n
@@ -57,12 +57,12 @@ const appSeal = new Vue({
 
 appSeal.$on('dialog:open', (model) => {
 	appSeal.$data.action = sealAction,
-	appSeal.$data.chosenFile = model
+		appSeal.$data.chosenFile = model
 })
 
 appSeal.$on('dialog:closed', () => {
 	appSeal.$data.action = null,
-	appSeal.$data.chosenFile = null
+		appSeal.$data.chosenFile = null
 })
 
 // Sign menu
@@ -77,12 +77,12 @@ const appSign = new Vue({
 
 appSign.$on('dialog:open', (model) => {
 	appSign.$data.action = signAction,
-	appSign.$data.chosenFile = model
+		appSign.$data.chosenFile = model
 })
 
 appSign.$on('dialog:closed', () => {
 	appSign.$data.action = null,
-	appSign.$data.chosenFile = null
+		appSign.$data.chosenFile = null
 })
 
 registerFileAction(new FileAction({
@@ -91,9 +91,9 @@ registerFileAction(new FileAction({
 	iconSvgInline: () => Logo,
 	enabled: (files, view) => {
 		return (files.length === 1
-				// && files[0].mime === 'application/pdf'
-				&& files[0].type === 'file'
-				&& (files[0].permissions & (Permission.READ | Permission.WRITE)) === (Permission.READ | Permission.WRITE))
+			// && files[0].mime === 'application/pdf'
+			&& files[0].type === 'file'
+			&& (files[0].permissions & (Permission.READ | Permission.WRITE)) === (Permission.READ | Permission.WRITE))
 	},
 	exec: (file, view, dir) => {
 		appSign.$emit('dialog:open', file)
@@ -106,9 +106,9 @@ registerFileAction(new FileAction({
 	iconSvgInline: () => Logo,
 	enabled: (files, view) => {
 		return (files.length === 1
-				// && files[0].mime === 'application/pdf'
-				&& files[0].type === 'file'
-				&& (files[0].permissions & (Permission.READ | Permission.WRITE)) === (Permission.READ | Permission.WRITE))
+			// && files[0].mime === 'application/pdf'
+			&& files[0].type === 'file'
+			&& (files[0].permissions & (Permission.READ | Permission.WRITE)) === (Permission.READ | Permission.WRITE))
 	},
 	exec: (file, view, dir) => {
 		appSeal.$emit('dialog:open', file)

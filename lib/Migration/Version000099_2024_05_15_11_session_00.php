@@ -12,37 +12,36 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_session_00 extends SimpleMigrationStep
 {
-    const session               = 'session';
-    const openotp_sign_sessions = 'openotp_sign_sessions';
+	const session				= 'session';
+	const openotp_sign_sessions	= 'openotp_sign_sessions';
 
-    public function __construct(
-        private IDBConnection $connection,
-    ) {
-    }
+	public function __construct(
+		private IDBConnection $connection,
+	) {}
 
-    public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
-    {
-        /** @var ISchemaWrapper $schema */
-        $schema = $schemaClosure();
+	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
+	{
+		/** @var ISchemaWrapper $schema */
+		$schema = $schemaClosure();
 
-        if ($schema->hasTable(self::openotp_sign_sessions)) {
-            $table = $schema->getTable(self::openotp_sign_sessions);
+		if ($schema->hasTable(self::openotp_sign_sessions)) {
+			$table = $schema->getTable(self::openotp_sign_sessions);
 
-            // Add column if needed, otherwise modify it
-            if (!$table->hasColumn(self::session)) {
-                $table->addColumn(self::session, 'string', [
-                    'notnull' => true,
-                    'length' => 256
-                ]);
-            } else {
-                $table->modifyColumn(self::session, [
-                    'type'      => Type::getType('string'),
-                    'length'    => 256,
-                    'notnull'   => true,
-                ]);
-            }
-        }
+			// Add column if needed, otherwise modify it
+			if (!$table->hasColumn(self::session)) {
+				$table->addColumn(self::session, 'string', [
+					'notnull' => true,
+					'length' => 256
+				]);
+			} else {
+				$table->modifyColumn(self::session, [
+					'type'		=> Type::getType('string'),
+					'length'	=> 256,
+					'notnull'	=> true,
+				]);
+			}
+		}
 
-        return $schema;
-    }
+		return $schema;
+	}
 }

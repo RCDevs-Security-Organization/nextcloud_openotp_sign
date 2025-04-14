@@ -20,7 +20,7 @@
  */
 
 
-// TODO   will be replaced by API call
+// TODO	 will be replaced by API call
 // const appInfo = require('../appinfo/info.xml');
 // const appName = appInfo.info.id[0];
 
@@ -28,7 +28,7 @@
 
 // const appInfo = require('../../appinfo/info.xml');
 // export const appName = appInfo.info.id[0];
-export const apiv1   = '/api/v1';
+export const apiv1 = '/api/v1';
 export const appName = 'openotp_sign';
 export const baseUrl = `apps/${appName}`;
 export const sealAction = 'sealAction';

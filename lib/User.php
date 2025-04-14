@@ -30,8 +30,7 @@ class User implements JsonSerializable
 	public function __construct(
 		public string $username,
 		public string $displayName,
-	) {
-	}
+	) {}
 
 	public function jsonSerialize()
 	{

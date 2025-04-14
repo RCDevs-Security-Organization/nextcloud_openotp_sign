@@ -39,14 +39,14 @@ export default {
 
 	methods: {
 		open() {
-			this.isVisible = true
+			this.isVisible = true;
 		},
 
 		close() {
-			this.isVisible = false
+			this.isVisible = false;
 		},
 	},
-}
+};
 </script>
 
 <style scoped>

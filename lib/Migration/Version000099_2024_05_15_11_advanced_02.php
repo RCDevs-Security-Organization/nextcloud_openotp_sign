@@ -12,14 +12,13 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_advanced_02 extends SimpleMigrationStep
 {
-	const is_advanced		   = 'is_advanced';
-	const openotp_sign_sessions = 'openotp_sign_sessions';
-	const tmp_advanced		  = 'tmp_advanced';
+	const is_advanced			= 'is_advanced';
+	const openotp_sign_sessions	= 'openotp_sign_sessions';
+	const tmp_advanced			= 'tmp_advanced';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{

@@ -12,15 +12,14 @@ use OCP\IDBConnection;
 
 class Version000099_2024_05_15_11_file_path_01 extends SimpleMigrationStep
 {
-	const file_path			 = 'file_path';
-	const openotp_sign_sessions = 'openotp_sign_sessions';
-	const path				  = 'path';
-	const tmp_file_path		 = 'tmp_file_path';
+	const file_path				= 'file_path';
+	const openotp_sign_sessions	= 'openotp_sign_sessions';
+	const path					= 'path';
+	const tmp_file_path			= 'tmp_file_path';
 
 	public function __construct(
 		private IDBConnection $connection,
-	) {
-	}
+	) {}
 
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): null|ISchemaWrapper
 	{
@@ -36,13 +35,13 @@ class Version000099_2024_05_15_11_file_path_01 extends SimpleMigrationStep
 				if (!$table->hasColumn(self::file_path)) {
 					$table->addColumn(self::file_path, 'string', [
 						'length'	=> 512,
-						'notnull'   => true,
+						'notnull'	=> true,
 					]);
 				} else {
 					$table->modifyColumn(self::file_path, [
-						'type'	  => Type::getType('string'),
+						'type'		=> Type::getType('string'),
 						'length'	=> 512,
-						'notnull'   => true,
+						'notnull'	=> true,
 					]);
 				}
 			}
